@@ -1,3 +1,9 @@
+"""
+      This Source Code Form is subject to the terms of the Mozilla
+      Public License, v. 2.0. If a copy of the MPL was not distributed
+      with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+"""
+
 import img2pdf
 import os
 import shutil
@@ -43,8 +49,6 @@ def batch(bookname):
                   img.resize(width=refwidth,height=refheight)
             img.reset_coords()
             img.save(filename=f"working/{loose.name}")
-            #shutil.copy2(img.path,'working')
-
 
       #write pdf
       imgs =[]
