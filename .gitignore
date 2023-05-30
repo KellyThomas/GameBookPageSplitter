@@ -2,6 +2,6 @@
 .vs
 .vscode
 /html
-/pdf/input/*.pdf
-/pdf/working
-/pdf/output
+/input/*.pdf
+/working/*.png
+/output/*.pdf
