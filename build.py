@@ -11,20 +11,22 @@ import math
 from wand.image import Image as Image
 
 step=10
-i=step
 
 def batch(bookname):
+      global i
+      i=step
       for loose in os.scandir(f'working'):
-            os.remove(loose.path)
+            if loose.name != '.gitignore':
+                  os.remove(loose.path)
 
       # copy from pdf
       pdf = Image(filename=f'input/{bookname}.pdf', resolution=300)
       pdfimage = pdf.convert("png")
       pages  = []
-      #pdfimage.splice(width=0,height=1,gravity='south')
       for img in pdfimage.sequence:
             pdfpage = Image(image=img)
             if pdfpage.width>pdfpage.height:
+                  autocenter(pdfpage)
                   halfwidth = math.ceil(pdfpage.width/2)
                   left = pdfpage.region(width=halfwidth)
                   pages.append((left, 'left'))
@@ -106,24 +108,13 @@ def autocenter(img):
 
 
 def main():
-      for pdf in os.scandir(f'input'):
-            print(pdf.name)
-            if pdf.name.endswith("pdf"):
-                  batch(pdf.name[:-4])
-      #batch('GrailQuest1-TheCastleOfDarkness')
+      for file in os.scandir(f'input'):
+            if file.name.endswith(".pdf"):
+                  bookname = file.name[:-4]
+                  batch(bookname)
+      # batch('GrailQuest8-LegionOfTheDead')
 
 
 
 if __name__ == "__main__":
     main()
-      # reference = Image(filename="working/0010.png")
-      # img = Image(filename='input/GrailQuest1-TheCastleOfDarkness/0001.jpg')
-      # img.save(filename=f"test-0-original.png")
-      # img.resize(width=reference.width, height=reference.height)
-      # img.save(filename=f"test-1-resize.png")
-
-
-"""  ""
-from wand.image import Image as Image
-
-"""

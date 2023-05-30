@@ -30,8 +30,10 @@ Its basic workflow is:
 ## Limitations
 
 1. This converts text based PDF files to image based PDF files, this will break text-to-speech screen readers, text search, any hyperlinks that may be present, etc.
-
 2. The horizontal trim and re-center tooling is pretty simple.  It is unable to clean up the noise present on the scans on GrailQuest3-TheGatewayOfDoom and these will be poorly aligned.
+3. GQ8 is poorly centered, if the pdf page is split in the middle then it cuts through the content of some of the book pages. Centering the PDF page before splitting fixes this.
+   But if QG7 is centered before splitting then the uneven outer margins of text only pages an full image pages causes page content to be split.
+   It may not be possible to have a simple one size fits all solution.
 
 ## License
 This tool leans heavily on the works of others, both open source and proprietary.
