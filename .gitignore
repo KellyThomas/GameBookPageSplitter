@@ -1,7 +1,7 @@
 .env
 .vs
 .vscode
-/html
-/input/*.pdf
-/working/*.png
-/output/*.pdf
+#/html
+#/input/*.pdf
+#/working/*.png
+#/output/*.pdf
